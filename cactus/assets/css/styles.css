@@ -4,7 +4,7 @@
 /*=============== VARIABLES CSS ===============*/
 :root {
   --header-height: 3.5rem;
-  /* ========== Colors ==========*/
+  /*========== Colors ==========*/
   /*Color mode HSL(hue, saturation, lightness)*/
   --first-color: hsl(93, 54%, 54%);
   --first-color-alt: hsl(93, 50%, 48%);
@@ -127,7 +127,7 @@ img {
   top: 0;
   left: 0;
   background-color: transparent;
-  z-index: var(--z-index);
+  z-index: var(--z-fixed);
 }
 
 .nav {
@@ -166,45 +166,43 @@ img {
 }
 
 /* Navigation for mobile devices */
-
 @media screen and (max-width: 1150px) {
   .nav__menu {
     position: fixed;
     top: 0;
     right: -100%;
-    background-color: hsla(228, 24%, 6, 0.2);
+    background-color: hsla(228, 24%, 6%, 0.2);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
     width: 80%;
     height: 100%;
-    padding: 6rem 3rem 0;
+    padding: 6rem 3rem;
     transition: right 0.4s;
-  }
-
-  .nav__list {
-    display: flex;
-    flex-direction: column;
-    row-gap: 3rem;
-  }
-
-  .nav__link {
-    color: var(--title-color);
-    font-weight: var(--font-semi-bold);
-    transition: color 0.4s;
-  }
-
-  .nav__link:hover {
-    color: var(--first-color);
-  }
-
-  .nav__close {
-    position: absolute;
-    top: 1.15rem;
-    right: 1.5rem;
-    font-size: 1.25rem;
   }
 }
 
+.nav__list {
+  display: flex;
+  flex-direction: column;
+  row-gap: 3rem;
+}
+
+.nav__link {
+  color: var(--title-color);
+  font-weight: var(--font-semi-bold);
+  transition: color 0.4s;
+}
+
+.nav__link:hover {
+  color: var(--first-color);
+}
+
+.nav__close {
+  position: absolute;
+  top: 1.15rem;
+  right: 1.15rem;
+  font-size: 1.25rem;
+}
 /* Show menu */
 .show-menu {
   right: 0;
@@ -216,12 +214,12 @@ img {
   position: absolute;
   width: 1000%;
   height: 100%;
-  background-color: hsla(228, 24%, 6, 0.2);
+  background-color: hsl(228, 24%, 6%, 0.2);
   backdrop-filter: blur(16px);
   -webkit-backdrop-filter: blur(16px);
   top: 0;
   left: 0;
-  z-index: -10;
+  z-index: -1;
 }
 
 /* Active link */
@@ -234,7 +232,7 @@ img {
 
 .home__img {
   width: 270px;
-  filter: drop-shadow(--shadow-img);
+  filter: drop-shadow(var(--shadow-img));
   justify-self: center;
 }
 
@@ -256,19 +254,18 @@ img {
   margin-bottom: 3rem;
 }
 
-.home__buttons {
+.home__button {
   display: flex;
   justify-content: center;
   align-items: center;
   column-gap: 0.5rem;
 }
-
 /*=============== BUTTON ===============*/
 .button {
   background-color: var(--white-color);
   color: var(--black-color);
   font-weight: var(--font-bold);
-  padding: 0.5rem;
+  padding: 0.5rem 1.5rem 0.5rem 0.5rem;
   border-radius: 4rem;
   display: inline-flex;
   align-items: center;
@@ -299,14 +296,16 @@ img {
 .button__link:hover {
   color: var(--first-color);
 }
+
 /*=============== NEWS ===============*/
 .new__data {
   text-align: center;
 }
 
 .new__container {
-  row-gap: 7.5rem;
+  row-gap: 7rem;
 }
+
 .new__content {
   row-gap: 6rem;
 }
@@ -347,15 +346,15 @@ img {
 .new__card:hover .new__img {
   transform: translateY(-0.5rem);
 }
-
 /*=============== SHOP ===============*/
 .shop__container {
-  padding-top: 6.5 rem;
+  padding-top: 6.5rem;
   grid-template-columns: repeat(2, 1fr);
   gap: 6rem 1.5rem;
 }
 
 .shop__card {
+  position: relative;
   background: var(--gradient-card);
   padding: 5.75rem 0.75rem 1.25rem 0.75rem;
   border: 2px solid var(--first-color-light);
@@ -363,7 +362,7 @@ img {
 }
 
 .shop__img {
-  position: static;
+  position: absolute;
   top: -4.5rem;
   left: 0;
   right: 0;
@@ -384,7 +383,7 @@ img {
 }
 
 .shop__button {
-  /* position: absolute; */
+  position: absolute;
   right: 0.75rem;
   bottom: 0.75rem;
   outline: none;
@@ -395,6 +394,10 @@ img {
   font-size: 1.25rem;
   display: grid;
   cursor: pointer;
+}
+
+.shop__card:hover .shop__img {
+  transform: translateY(-0.5rem);
 }
 /*=============== CARE ===============*/
 
